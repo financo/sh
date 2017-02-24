@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.wzy.entity">
+	<class name="com.wzy.entity.Teacher" table="Teacher">
+		<id name="id" type="java.lang.Integer" column="ID">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" type="java.lang.String" column="NAME"/>
+		<property name="sex" type="java.lang.String" column="SEX"/>
+		<property name="degree" type="java.lang.String" column="DEGREE"/>
+		<property name="position" type="java.lang.String" column="POSITION"/>
+		<property name="eduBackground" type="java.lang.String" column="EDUBACKGROUND"/>
+		<property name="college" type="java.lang.String" column="COLLEGE"/>
+		<property name="address" type="java.lang.String" column="ADDRESS"/>
+		<property name="direction" type="java.lang.String" column="DIRECTION"/>
+		<property name="intro" type="java.lang.String" column="INTRO"/>
+		<property name="achievement" type="java.lang.String" column="ACHIEVEMENT"/>
+		<property name="photo" type="java.lang.String" column="PHOTO"/>
+	</class>
+</hibernate-mapping>

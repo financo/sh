@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.wzy.entity">
+	<class name="com.wzy.entity.User" table="User">
+		<id name="id" type="java.lang.Integer" column="ID">
+			<generator class="native"></generator>
+		</id>
+		<property name="num" type="java.lang.String" column="NUM"/>
+		<property name="password" type="java.lang.String" column="PASSWORD"/>
+		<property name="name" type="java.lang.String" column="NAME"/>
+	</class>
+</hibernate-mapping>
