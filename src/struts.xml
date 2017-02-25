@@ -3,9 +3,34 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<package name="user" extends="struts-default">
-		<action name="login" class="com.wzy.web.UserLoginAction" method="login">
-			<result name="success">/pages/success.jsp</result>
+	<package name="firstpage" namespace="/" extends="struts-default">
+		<action name="firstpage" class="com.wzy.action.FirstpageAction">
+			<result name="success">/pages/userPages/firstpage.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="teacher" namespace="/" extends="struts-default">
+		<action name="teacher" class="com.wzy.action.TeacherAction">
+			<result name="success">/pages/userPages/teacher.jsp</result>
+		</action>
+	</package>
+	
+	<package name="book" namespace="/" extends="struts-default">
+		<action name="book" class="com.wzy.action.BookAction">
+			<result name="success">/pages/userPages/booklist.jsp</result>
+		</action>
+	</package>
+	
+	<package name="ppt" namespace="/" extends="struts-default">
+		<action name="userppt" class="com.wzy.action.PptAction">
+			<result name="pptlist">/pages/userPages/pptlist.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentDisposition">
+					attachment;filename="${filename}"
+				</param>
+				<param name="inputName">downloadFile</param>
+				<param name="bufferSize">1024000</param>
+			</result>
 		</action>
 	</package>
 </struts>

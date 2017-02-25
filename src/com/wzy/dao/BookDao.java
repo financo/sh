@@ -1,5 +1,7 @@
 package com.wzy.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -47,6 +49,16 @@ public class BookDao {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
 		Book b = (Book)session.get(Book.class, id);
+		session.flush();
+		tx.commit();
+		HibernateUtil.closeSession();
+		return b;
+	}
+	
+	public List<Book> loadAll(){
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		List<Book> b = (List<Book>)session.createQuery("from Book").list();
 		session.flush();
 		tx.commit();
 		HibernateUtil.closeSession();

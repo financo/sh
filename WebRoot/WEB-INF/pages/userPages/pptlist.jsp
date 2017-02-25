@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>pptlist</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,9 +20,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
   <body>
-    <a href="pages/userPages/index.jsp">login</a> <br>
+    <s:iterator var="ppt" value="#lst">
+    	<tr>
+    		<td bgcolor="#ffffff" align="center">
+    			<div class="style3"><%=num++ %></div>
+    		</td>
+    		<td bgcolor="#ffffff" align="center">
+    			<div class="style3">
+					<s:property value="#ppt.name"></s:property>
+				</div>
+    		</td>
+    		<td bgcolor="#ffffff" align="center">
+    			<div class="style3">
+					<s:a action="userppt!pptDownload.action">
+					下载<s:param name="id">${ppt.id }</s:param>
+					</s:a>
+				</div>
+    		</td>
+    	</tr>
+    </s:iterator>
   </body>
 </html>

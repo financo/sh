@@ -1,32 +1,33 @@
 package com.wzy.test;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
-import com.wzy.dao.PptDao;
-import com.wzy.entity.Ppt;
+import com.wzy.dao.TeacherDao;
+import com.wzy.entity.Teacher;
 
 public class testDao {
 
 
 	@Test
 	public void testSave() {
-		PptDao teacherDao = new PptDao();
+		TeacherDao teacherDao = new TeacherDao();
 //		UserDao userDao = new UserDao();
 		
-		Ppt teacher = new Ppt();
+		Teacher teacher = new Teacher();
 		teacher.setId(1);
 		teacher.setName("Mr.W");
-//		teacher.setPhoto("haha");
-//		teacher.setPosition("wo cao");
-//		teacher.setIntro("jiji");
-//		teacher.setAddress("beijing");
-//		teacher.setAchievement("excellent");
-//		teacher.setCollege("zhengzhou");
-//		teacher.setEduBackground("master");
-		teacher.setDate("master");
-		teacher.setPath("man");
+		teacher.setSex("ÄÐ");
+		teacher.setDegree("master");
+		teacher.setPhoto("haha");
+		teacher.setPosition("wo cao");
+		teacher.setIntro("jiji");
+		teacher.setAddress("beijing");
+		teacher.setAchievement("excellent");
+		teacher.setCollege("zhengzhou");
+		teacher.setEduBackground("master");
+		teacher.setDirection("finance");
+//		teacher.setDate("master");
+//		teacher.setPath("man");
 
 		teacherDao.save(teacher);
 		
