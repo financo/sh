@@ -24,6 +24,7 @@ public class PptAction extends ActionSupport{
 	public String showPptList() throws Exception{
 		ActionContext context = ActionContext.getContext();
 		List<Ppt> lst = pptDao.loadAll();
+		context.put("lst", lst);
 		return "pptlist";
 	}
 	

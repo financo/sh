@@ -21,8 +21,14 @@
 		</action>
 	</package>
 	
+	<package name="user" namespace="/" extends="struts-default">
+		<action name="user" class="com.wzy.action.UserAction">
+			<result name="success">/pages/userPages/booklist.jsp</result>
+		</action>
+	</package>
+	
 	<package name="ppt" namespace="/" extends="struts-default">
-		<action name="userppt" class="com.wzy.action.PptAction">
+		<action name="userppt" class="com.wzy.action.PptAction" method="showPptList">
 			<result name="pptlist">/pages/userPages/pptlist.jsp</result>
 			<result name="success" type="stream">
 				<param name="contentDisposition">

@@ -25,10 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="header" class="header">
 	    <div id="menu" class="menu">
 	        <ul class="menulist">
-	            <li><a href="#">首页</a></li>
-	            <li><a href="#">教师介绍</a></li>
-	            <li><a href="#">相关书籍</a></li>
-	            <li><a href="#">电子教程</a></li>
+            <li><a>首页</a></li>
+            <li><a>教师介绍</a></li>
+            <li><a>相关书籍</a></li>
+            <li><a>电子教程</a></li>
 	        </ul>
 	    </div>
 	</div>
@@ -42,21 +42,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <!--内容左侧部分-->
 	    <div id="content-left" class="content-left">
 	        <div id="login" class="login">
-	            <form action="#">
 	                <label>用户名：</label>
-	                <input type="text" name="name"/><br/>
+	                <input type="text" id="name" name="name"/><br/>
 	                <label>密  码：</label>
-	                <input type="password" name="pwd"/><br/>
+	                <input type="password" id="password" name="pwd"/><br/>
 	                &nbsp;&nbsp;
-	                <input type="button" value="登录">&nbsp;&nbsp;
+	                <input type="button" onclick="sendRequest();" value="登录">&nbsp;&nbsp;
 	                <input type="button" value="取消">
-	            </form>
 	        </div>
 	    </div>
 	
 	    <!--内容右侧部分-->
 	    <div id="content-right" class="content-right">
-	        <div id="title" class="title">
+	    	<iframe src="sh/pages/userPages/firstpage" width="100%" height="100%" border="none"></iframe>
+	        <!-- <div id="title" class="title">
 	            课程介绍>>
 	        </div>
 	        <hr/>
@@ -69,12 +68,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                他强调，新机场是首都的重大标志性工程，是国家发展一个新的动力源，必须全力打造精品工程、样板工程、平安工程、廉洁工程。每个项目、每个工程都要实行最严格的施工管理，确保高标准、高质量。要努力集成世界上最先进的管理技术和经验。
 	                他强调，北京城市规划建设和北京冬奥会筹办工作是当前和今后一个时期北京市的两项重要任务，要认真贯彻党中央决策部署，坚持首善标准，解放思想、开阔思路，求真务实、攻坚克难，统筹生产、生活、生态，立足提高治理能力抓好城市规划建设，着眼精彩非凡卓越筹办好北京冬奥会，努力开创首都发展更加美好的明天。
 	            </p>
-	        </div>
+	        </div> -->
 	    </div>
 	</div>
 	<!--页脚-->
 	<div id="footer" class="footer">
 	    <p>版权所有</p>
 	</div>
+<script type="text/javascript">
+    window.onload=function(){
+        var li=document.getElementsByTagName("li");
+        li[0].onclick=function(e){ e.preventDefault();document.getElementsByTagName("iframe")[0].src="sh/pages/userPages/firstpage";};
+        li[1].onclick=function(e){e.preventDefault();document.getElementsByTagName("iframe")[0].src="sh/pages/userPages/teacher";};
+        li[2].onclick=function(e){e.preventDefault();document.getElementsByTagName("iframe")[0].src="sh/pages/userPages/book";};
+        li[3].onclick=function(e){e.preventDefault();document.getElementsByTagName("iframe")[0].src="sh/pages/userPages/userppt";};
+    }
+    
+    var XHR=false;
+    function CreateXHR(){
+    	try{
+    		XHR= new ActiveXOBject("msxml2.XMLHTTP");
+    	}catch(e1){
+    		try{
+    			XHR = new ActiveXObject("microsoft.XMLHTTP");
+    		}catch(e2){
+    			try{
+    				XHR = new XMLHttpRequest();
+    			}catch(e3){
+    				XHR=false;
+    			}		
+    		}
+    	}
+    }
+    function sendRequest(){
+    	CreateXHR();
+    	if(XHR){
+    		var name=document.getElementById("name").value;
+    		var password=document.getElementById("password").value;
+    		
+    		var uri="http://localhost:8080/user?name="+name+"&password="+password;
+    		XHR.open("GET",uri,true);
+    		XHR.onreadystatechange=resultHandler;
+    		XHR.send(null);
+    	}
+    }
+    
+    function resultHandler(){
+    	if(XHR.readyState==4 && XHR.status==200){
+    		
+    	}
+    }
+</script>
   </body>
 </html>

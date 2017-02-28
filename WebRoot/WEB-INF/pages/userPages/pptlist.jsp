@@ -24,10 +24,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <table>
     <s:iterator var="ppt" value="#lst">
     	<tr>
     		<td bgcolor="#ffffff" align="center">
-    			<div class="style3"><%=num++ %></div>
+    			<div class="style3">
+    				<s:property value="#ppt.id"></s:property>
+    			</div>
     		</td>
     		<td bgcolor="#ffffff" align="center">
     			<div class="style3">
@@ -43,5 +46,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</td>
     	</tr>
     </s:iterator>
+    </table>
   </body>
 </html>
